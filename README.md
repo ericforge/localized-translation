@@ -20,34 +20,36 @@
 
 ## 核心特性
 
-- **语言不可知**：角色能力按「目标语言母语级」定义，不绑定中英。任意语言对、任意方向（含外→中、中文站内多语言）。
-- **locale 精确到「语言-地区」**：`es-ES ≠ es-MX`、`pt-BR ≠ pt-PT`、`zh-CN ≠ zh-TW`、`en-US ≠ en-GB`，45 个 locale 速查档。
+- **语言不可知**：角色能力按「目标语言母语级」定义，不绑定中英。任意语言对、任意方向（含外→中、中文站内多语言）；法域规则必须按项目配置启用。
+- **locale 精确到「语言-地区」**：`es-ES ≠ es-MX`、`pt-BR ≠ pt-PT`、`zh-CN ≠ zh-TW`、`en-US ≠ en-GB`，覆盖多个常用 locale。
 - **禁止 pivot 中转**：不允许「源 → 英文 → 目标」的二次失真路径，例外需用户同意 + 标注风险 + 回译验证。
 - **交付物是原生的，不是对照的**：终稿 + 关键处理说明表 + 术语表 + 待确认清单。
-- **URL 与 IP 不译（任何语言）**：标识符不是文本，逐字符冻结；交付前做源文/译文地址清单比对（URL / IP / MAC），客观验证没翻坏。
+- **URL 与 IP 默认逐字符冻结**：标识符不是普通文案；经批准的 slug 本地化或换指向属于独立的链接变更，交付前仍须做源文/译文地址清单比对（URL / IP / MAC）。
 
 ## 参考文件
 
 | 文件 | 内容 |
 | --- | --- |
-| `references/locale-profiles.md` | 45 个 locale 速查：文字方向 / 复数形式数 / 默认敬语 / 长度膨胀 / 易错点 |
+| `references/locale-profiles.md` | 多个常用 locale 速查：文字方向 / 复数规则 / 默认敬语 / 长度膨胀 / 易错点 |
 | `references/localization-checklist.md` | 本土化段逐条检查：度量衡换算、数字与货币格式、尺码、敬语档位、合规敏感词、地区名称与地图合规 |
 | `references/industry-labels.md` | 受管制品类强制标签（食品过敏原、化妆品 INCI、CLP、纺织纤维、WEEE、原产地）与销售国官方语言强制（法国 Loi Toubon、魁北克 Bill 96 等） |
 | `references/engineering.md` | 交付物是语言包 / JSON / 代码时：ICU 复数语法、占位符保护、禁止字符串拼接、大小写转换坑、伪本地化测试、LQA/MQM 评分 |
 | `references/case-orthography.md` | 大小写与正字法：英语大小写改词义（china/China、polish/Polish）、各语系国籍词与月份惯例对照、搜索不区分大小写、URL/SKU 大小写敏感 |
 | `references/typography-and-scripts.md` | 表面形式层：引号体系、破折号/省略号/顿号、连字符三级、不可断空格、汉字字形（Han unification）、东阿拉伯数字、简繁词汇差异、「惯例正确≠数学正确」 |
-| `references/urls-and-links.md` | URL、IP 与网络地址：**任何语言都不译**（含路径里可读的英文词、`localhost`）、识别边界、四种翻车方式、IP/端口/CIDR/MAC 的专属坑、href 不译而锚文本要译、何时该「换指向」、slug 本地化的取舍与 301、`hreflang` 规则、RTL 隔离与不可断行、**交付前的地址清单比对** |
+| `references/urls-and-links.md` | URL、IP 与网络地址：默认逐字符冻结（含路径里可读的英文词、`localhost`），识别边界、四种翻车方式、IP/端口/CIDR/MAC 的专属坑、href 不译而锚文本要译、何时该「换指向」、slug 本地化的取舍与 301、`hreflang` 规则、RTL 隔离与不可断行、**交付前的地址清单比对** |
 
 ## 安装
 
-### WorkBuddy / Claude Code
+### 支持 Agent Skills 的宿主
 
 ```bash
 git clone https://github.com/ericforge/localized-translation.git \
   ~/.workbuddy/skills/localized-translation
 ```
 
-或下载 zip 解压到 `~/.workbuddy/skills/` 下。Skill 加载后，说「翻译 / 汉化 / 本地化 / 翻成德语日语 / localize」即自动调用。
+上面是 WorkBuddy 示例。Claude Code 请按其当前 Skills 文档，将仓库放入 `~/.claude/skills/localized-translation`；其他宿主应放入其配置的 skills 目录。不要把宿主专属的记忆路径写入本 Skill。
+
+Skill 加载后，说「翻译 / 汉化 / 本地化 / 翻成德语日语 / localize」即可触发。
 
 ## 使用示例
 
@@ -63,7 +65,7 @@ Wireless Earbuds, Bluetooth 5.3 Headphones with 48H Playtime, IPX7 Waterproof
 
 1. **翻译 ≠ 本地化。** 字面忠实只是及格线。
 2. **信息不足时先跑再问**：按最可能的假设产出，把假设写进「待确认」，而不是反问一堆问题卡住流程。
-3. **硬约束**：不新增原文没有的事实与功效宣称；不删减警告与免责条款；品牌名与 SKU 不译；**URL、IP 与网络地址任何语言都不译**（语言无关的标识符，逐字符冻结 —— 路径里可读的英文单词、`localhost`、`192.0.2.1:8080` 都照原样保留。翻译或改写它们等于造一个不存在的地址，而且 IP 长得像普通数字与标点，最容易被「数字本地化」「标点规范化」流程改坏）。
+3. **硬约束**：不新增原文没有的事实与功效宣称；不删减警告与免责条款；品牌名与 SKU 不译；**URL、IP 与网络地址默认逐字符冻结**（语言无关的标识符，路径里可读的英文单词、`localhost`、`192.0.2.1:8080` 通常都照原样保留。经批准的 slug 本地化或换指向必须作为独立链接变更记录，并完成地址校验）。
 4. **不冒充已核实的依据**：所有换算系数、字符上限、复数类别数与法规条文均标注「以 CLDR / ICU / 平台后台 / 官方文本为准」。
 
 ## 免责声明
