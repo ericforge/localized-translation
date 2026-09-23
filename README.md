@@ -46,9 +46,11 @@
 
 无论你使用 Claude Code、Codex、Cursor、WorkBuddy，还是其他 Agent，只要它支持 Agent Skills 规范或兼容 `SKILL.md`，都可以把下面这段话发给它：
 
-> 我想安装 `localized-translation`。
-> 项目地址：https://github.com/ericforge/localized-translation
-> 请将它安装到当前 Agent 的 skills 目录，并完成加载验证；如果不支持自动安装，请告诉我手动安装步骤。
+```text
+我想安装 localized-translation。
+项目地址：https://github.com/ericforge/localized-translation
+请将它安装到当前 Agent 的 skills 目录，并完成加载验证；如果不支持自动安装，请告诉我手动安装步骤。
+```
 
 ### 手动安装
 
