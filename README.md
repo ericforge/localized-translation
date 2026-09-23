@@ -35,6 +35,7 @@
 | `references/engineering.md` | 交付物是语言包 / JSON / 代码时：ICU 复数语法、占位符保护、禁止字符串拼接、大小写转换坑、伪本地化测试、LQA/MQM 评分 |
 | `references/case-orthography.md` | 大小写与正字法：英语大小写改词义（china/China、polish/Polish）、各语系国籍词与月份惯例对照、搜索不区分大小写、URL/SKU 大小写敏感 |
 | `references/typography-and-scripts.md` | 表面形式层：引号体系、破折号/省略号/顿号、连字符三级、不可断空格、汉字字形（Han unification）、东阿拉伯数字、简繁词汇差异、「惯例正确≠数学正确」 |
+| `references/urls-and-links.md` | URL 与链接：哪些组件逐字符冻结、href 不译而锚文本要译、何时该「换指向」、slug 本地化的取舍与 301、`hreflang` 规则、RTL 隔离与不可断行 |
 
 ## 安装
 
