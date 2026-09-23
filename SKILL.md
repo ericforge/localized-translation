@@ -22,6 +22,7 @@ agent_created: true
 | `references/locale-profiles.md` | 定了目标 locale 后，先查这个 locale 的语言档 |
 | `references/industry-labels.md` | 涉及食品/化妆品/纺织/电子/玩具/化学品/电池，或需用销售国官方语言时 |
 | `references/engineering.md` | 交付物是语言包 / JSON / 代码 / 多语言站点，或涉占位符、复数、编码时 |
+| `references/case-orthography.md` | 涉关键词 / 标题 / 品牌名 / 产地表述，或目标语不是英语时（**大小写在各语系承载的信息量不同**） |
 
 ## 流水线：四个角色 + 一个可选角色
 
@@ -61,7 +62,7 @@ agent_created: true
 
 - **Step 1**：长句切分重组，不带源语从句结构硬搬；语态按目标语习惯调整；歧义**保留两种理解**并标注
 - **Step 2**：语法用词、术语一致、数字单位日期逐项核对
-- **Step 3（核心）**：过 `references/localization-checklist.md`，并按 `locale-profiles.md` 查语言档。关键面：度量衡、货币与数字格式、日期时间、**敬语 T-V 档位**、**复数与占位符**、文化替换、排版方向（RTL/bidi）、拼写变体、**合规敏感词**、字符计数
+- **Step 3（核心）**：过 `references/localization-checklist.md`，并按 `locale-profiles.md` 查语言档。关键面：度量衡、货币与数字格式、日期时间、**敬语 T-V 档位**、**复数与占位符**、**大小写与正字法**（见 `case-orthography.md`：英语大小写改词义、德语名词必大写、罗曼语国籍词小写、中日韩无大小写）、文化替换、排版方向（RTL/bidi）、拼写变体、**合规敏感词**、字符计数
 - **Step 4**：按文体切换（文学求意境 / 科技求精确 / 营销求转化 / 客服求共情）
 
 ### Step 5：输出
@@ -103,6 +104,7 @@ agent_created: true
 
 1. **销售国官方语言是硬要求。** 法国 Loi Toubon、魁北克 Bill 96、加拿大英法双语、沙特/阿联酋阿语标签、德国说明书德语 —— 缺文件语言的译文可能直接导致下架或清关扣货。详见 `references/industry-labels.md`。
 2. **关键词不能假定可直译。** 搜索词、后端 Search Terms、Meta Keywords 必须在目标市场重新验证（当地叫法、搜索量、同义词）。**不要输出未经验证的「关键词」**，标注为待调研。
+   - 附：**大小写不能用来区分词义** —— 亚马逊/Google 的匹配不区分大小写，`polish` 与 `Polish` 是同一个 token。多义词必须用**上下文词组**消歧（`nail polish` vs `made in Poland`），靠大小写堆词无效且被视为重复。详见 `references/case-orthography.md`。
 3. **图片内的文字。** 主图、A+ 图、包装、说明书扫描件里的硬编码文字不翻，等于没本地化。需给替换文案并提示重新出图。
 4. **受管制品类的强制标签。** 食品过敏原与营养表、化妆品 INCI 名不译、纺织纤维成分、CLP 象形图、WEEE/电池标识、原产地标示 —— 文字层之外还有标签层。
 5. **商标与语义排查。** 品牌名/产品名进入新市场前查：是否已被注册、当地是否有负面或滑稽含义、是否需要转写（日文片假名等）。**注意：广为流传的「Nova = no va」案例已被多方质疑，请当作「需要实查」的提示而非事实。**

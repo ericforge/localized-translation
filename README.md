@@ -33,6 +33,7 @@
 | `references/localization-checklist.md` | 本土化段逐条检查：度量衡换算、数字与货币格式、尺码、敬语档位、合规敏感词、地区名称与地图合规 |
 | `references/industry-labels.md` | 受管制品类强制标签（食品过敏原、化妆品 INCI、CLP、纺织纤维、WEEE、原产地）与销售国官方语言强制（法国 Loi Toubon、魁北克 Bill 96 等） |
 | `references/engineering.md` | 交付物是语言包 / JSON / 代码时：ICU 复数语法、占位符保护、禁止字符串拼接、大小写转换坑、伪本地化测试、LQA/MQM 评分 |
+| `references/case-orthography.md` | 大小写与正字法：英语大小写改词义（china/China、polish/Polish）、各语系国籍词与月份惯例对照、搜索不区分大小写、URL/SKU 大小写敏感 |
 
 ## 安装
 
