@@ -34,6 +34,7 @@
 | `references/industry-labels.md` | 受管制品类强制标签（食品过敏原、化妆品 INCI、CLP、纺织纤维、WEEE、原产地）与销售国官方语言强制（法国 Loi Toubon、魁北克 Bill 96 等） |
 | `references/engineering.md` | 交付物是语言包 / JSON / 代码时：ICU 复数语法、占位符保护、禁止字符串拼接、大小写转换坑、伪本地化测试、LQA/MQM 评分 |
 | `references/case-orthography.md` | 大小写与正字法：英语大小写改词义（china/China、polish/Polish）、各语系国籍词与月份惯例对照、搜索不区分大小写、URL/SKU 大小写敏感 |
+| `references/typography-and-scripts.md` | 表面形式层：引号体系、破折号/省略号/顿号、连字符三级、不可断空格、汉字字形（Han unification）、东阿拉伯数字、简繁词汇差异、「惯例正确≠数学正确」 |
 
 ## 安装
 
