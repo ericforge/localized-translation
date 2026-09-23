@@ -40,14 +40,29 @@
 
 ## 安装
 
-### 支持 Agent Skills 的宿主
+### 通用 Agent 安装
+
+本 Skill 适用于支持 Agent Skills 规范或兼容 `SKILL.md` 的 Agent 宿主。将仓库放入宿主配置的 skills 目录即可；具体目录以宿主文档为准。
+
+#### 通用方式
+
+将下面的 `/path/to/your-agent/skills` 替换为目标 Agent 的 skills 目录：
+
+```bash
+git clone https://github.com/ericforge/localized-translation.git \
+  /path/to/your-agent/skills/localized-translation
+```
+
+#### 常见宿主示例
+
+WorkBuddy：
 
 ```bash
 git clone https://github.com/ericforge/localized-translation.git \
   ~/.workbuddy/skills/localized-translation
 ```
 
-上面是 WorkBuddy 示例。Claude Code 请按其当前 Skills 文档，将仓库放入 `~/.claude/skills/localized-translation`；其他宿主应放入其配置的 skills 目录。不要把宿主专属的记忆路径写入本 Skill。
+Claude Code：按其当前 Skills 文档，将仓库放入 `~/.claude/skills/localized-translation`。其他宿主请放入其配置的 skills 目录；不要把宿主专属的记忆路径写入本 Skill。
 
 Skill 加载后，说「翻译 / 汉化 / 本地化 / 翻成德语日语 / localize」即可触发。
 
