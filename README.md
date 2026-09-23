@@ -1,6 +1,6 @@
 # localized-translation
 
-**多语言本地化翻译流水线** —— 一个面向跨境电商、独立站与 App 出海的语言无关（language-agnostic）翻译 Skill。
+**多语言本地化翻译流水线** —— 面向跨境电商、独立站和 App 出海场景的多语言本地化翻译 Skill。
 
 > English: A language-agnostic localization pipeline skill — translate → proofread → **localize** → polish → optional compliance review. Built for cross-border e-commerce listings, ads, DTC sites, app copy and regulatory text. Not a literal translation tool: the goal is output that reads like it was written natively in the target market.
 
